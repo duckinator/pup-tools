@@ -4,7 +4,11 @@ import inspect
 import sys
 from xml.etree import ElementTree
 
-def main(argv=None):
+def match(text, *queries):
+    doc = ElementTree.parse(text)
+    return [doc.findtext(query) for query in queries]
+
+def _main(argv=None):
     """
     Usage: python3 -m pup.xpath QUERY [QUERY...]
 
@@ -16,14 +20,14 @@ def main(argv=None):
     if argv is None:
         argv = sys.argv
 
-    if len(argv) < 2 or argv[1] == "-h" or argv[1] == "--help":
+    args = argv[1:] # Drop the process name.
+
+    if len(args) < 1 or "-h" in args or "--help" in args:
         print(inspect.getdoc(main), file=sys.stderr)
         return 1
 
-    doc = ElementTree.parse(sys.stdin)
-    for arg in argv[1:]:
-        print(doc.findtext(arg))
+    print("\n".join(match(sys.stdin, *args)))
     return 0
 
 if __name__ == "__main__":
-    exit(main())
+    exit(_main())
