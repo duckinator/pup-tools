@@ -7,6 +7,7 @@ setup(
         'console_scripts': [
             'pup.xpath=pup.xpath:_main',
             'pup.http=pup.http:_main',
+            'pup.py=pup.py:main',
         ],
         'distutils.commands': [
             'release = distutils_twine:release',
