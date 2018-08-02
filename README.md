@@ -1,9 +1,20 @@
 # pup-tools
 
-A collection of Python tools, available via `python3 -m pup.TOOL [...]`,
-which provide nice tools built using the Python standard library.
+A collection of Python tools, available via `python3 -m pup.TOOL [...]`
+or `pup.TOOL`, which provide built using only the Python standard library.
 
 ## Usage
+
+### http
+
+Fetch a document over HTTP.
+
+```
+$ pup.http get https://da.gd/ua
+Python-urllib/3.6
+
+$
+```
 
 ### xpath
 
@@ -11,7 +22,7 @@ Run XPath queries on a document provided via stdin, and print the
 results.
 
 ```
-$ curl -s 'http://rss.accuweather.com/rss/liveweather_rss.asp?locCode=02451' | python3 -m pup.xpath ./channel/title ./channel/item/title
+$ pup.http get 'http://rss.accuweather.com/rss/liveweather_rss.asp?locCode=02451' | pup.xpath ./channel/title ./channel/item/title
 Waltham, MA - AccuWeather.com Forecast
 Currently: Intermittent Clouds: 93F
 $
