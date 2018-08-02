@@ -6,7 +6,7 @@ import os
 import astunparse
 from typing import List
 
-__all__ = 'main',
+__all__ = ('main',)
 
 
 def parseargs(args=None):
