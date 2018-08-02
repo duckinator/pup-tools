@@ -26,7 +26,7 @@ def _main(argv=None):
     args = argv[1:] # Drop the process name.
 
     if len(args) < 1 or len(args) > 2 or "-h" in args or "--help" in args:
-        print(inspect.getdoc(main), file=sys.stderr)
+        print(inspect.getdoc(_main), file=sys.stderr)
         return 1
 
     if len(args) == 2:
